@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <title>Landing</title>
+    
+    <head>
+        <link rel="stylesheet" href="../static/landing.css">
+        <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    </head>
+
+    <body class="webpage">
+
+        <div class="header-bar">
+        
+
+            {% if logged_in %}
+            <div class="header-profile">
+                <i class="bx bx-user" style=" color: white;"></i>
+                <p style="color:white;">{{username}}</p>
+            </div>
+            <div class="header-buttons">
+                {% if username == "admin" %}
+                <button type="button" class="steg-btn" onclick="window.location.href='/admin-image-refresh'">Admin Refresh</button>
+                {% endif %}
+                <button type="button" class="steg-btn"  onclick="window.location.href='/logout'"> Logout </button>
+                <button type="button" class="steg-btn"  onclick="window.location.href='/steg_func_page'"> Embed or Extract </button>
+                <button type="button" class="post-btn" onclick="window.location.href='/post_page'">Post</button>
+            </div>
+            {% endif %}
+
+            {% if username == "guest" %}
+            <div class="header-profile">
+                <i class="bx bx-user" style=" color: white;"></i>
+                <p style="color:white;">Login to Embed, Extract, or make a post</p>
+            </div>
+            <div class="header-buttons">
+                <button type="button" class="steg-btn"  onclick="window.location.href='/'"> Login </button>
+            </div>
+            {% endif %}
+                
+        </div>
+        <h3 style = "color:white;">{{message}}</h3>
+
+        {% if post %}
+        <div class="media-box">
+            <div class="image-display">
+
+                {% if post.ext in ['png', 'jpg','jpeg','gif', 'avif', 'bmp'] %}
+                <img src="{{ url_for('static', filename='uploads/' + post.filename)}}" width = "600">
+
+
+                {% elif post.ext in ['mp3', 'wav'] %}
+                <audio controls>
+                    <source src="{{ url_for('static', filename='uploads/' + post.filename)}}">
+                </audio>
+
+                {% elif post.ext in ['mp4'] %}
+                <video width="400" controls>
+                    <source src="{{ url_for('static', filename='uploads/' + post.filename)}}">
+                </video>
+
+                {% else %}
+                    <p>{{ post.filename }}</p>
+                {% endif %}
+            </div>
+
+            <div class="posted-by-display">
+                <div class="posted-by-user">
+                    <i class="bx bx-user" style=" color: white; padding-top: 16px; padding-right: 10px;"></i>
+                    <p>{{post.username}}</p>
+                </div>
+                <div class="download-section">
+                    <a href="{{ url_for('static', filename='uploads/' + post.filename) }}" download class="download-btn">
+                        Download
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        {% if logged_in %}
+
+        <div class="next-prev-box">
+            <div class="previous-box">
+                <a href="/landing?index={{ index - 1 }}" class="prev-btn">Previous</a>
+            </div>
+                
+            <div class="next-box">
+                <a href="/landing?index={{ index + 1 }}" class="next-btn">Next</a>
+            </div>
+            
+            
+        </div>
+
+
+        {% endif %}
+
+        {% if username == "guest" %}
+
+        <div class="next-prev-box">
+            <div class="previous-box">
+                <a href="/guest_login?index={{ index - 1 }}" class="prev-btn">Previous</a>
+            </div>
+                
+            <div class="next-box">
+                <a href="/guest_login?index={{ index + 1 }}" class="next-btn">Next</a>
+            </div>
+            
+            
+        </div>
+
+        
+        
+        {% endif %}
+        {% endif %}
+
+
+        
+
+    </body>
+</html>

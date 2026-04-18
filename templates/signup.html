@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+
+    <title> Assignment 2 signup</title>
+    <link rel = "stylesheet" href = "../static/signup.css">
+    <!-- Basic Icons -->
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+
+  </head>
+
+  <body class = "webpage">
+
+    <div class = "page-grid">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class = "popup">
+            {{ messages[0] }}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <div class="login-box">
+        <form class = "login-box" action="/register" method="post">
+
+            <h1>Sign Up</h1>
+            <div class="inputBox">
+              <input type = "text" name="username" placeholder="Username" required>
+              <i class="bx bx-user"></i>
+
+            </div>
+            
+            <div class="inputBox">
+              <input type = "password" name = "password" placeholder="Password" required>
+              <i class="bx bx-lock" ></i>
+            </div>
+            
+            <button type="submit" class="login-btn">Submit</button> 
+            
+        </form>
+
+
+          <form class = "genpassbutton" action="/genpass" method="POST">
+            <button type = "submit" class="login-btn" style="height: 35px">Generate Password</button>
+          </form>
+          
+
+      </div>
+
+      {% if genpassword %}
+        <div class="genpass_results">
+          <h4>Generated Password:</h4>
+          <div class="password_text">
+            {{ genpassword }}
+          <div>
+
+
+
+        </div>
+      {% endif %}
+
+ 
+    
+
+    </div>
+
+    
+  </body>
+
+
+</html>

@@ -1,0 +1,50 @@
+.webpage
+{
+  background-color: #232323;
+}
+
+body
+{
+  display:flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-box
+{
+  height: 450px;
+  width: 400px;
+  background-color: #383838;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  color:white;
+  gap: 10px;
+  
+}
+
+.font
+{
+    color: white;
+}
+
+.S-input
+{
+  height: 30px;
+  width: 250px;
+  border: none;
+  border-radius: 15px;
+}
+
+.L-input
+{
+  height: 30px;
+  width: 250px;
+  border: none;
+  border-radius: 15px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+
+    <title> Assignment 2</title>
+    <link rel = "stylesheet" href = "../static/login.css">
+    <!-- Basic Icons -->
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+
+  </head>
+
+  <body class = "webpage">
+
+    <div class = "page-grid">
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class = "popup">
+            {{ messages[0] }}
+          </div>
+        {% endif %}
+      {% endwith %}
+      <form class = "login-box" action = '/login' method="POST">
+
+          <h1>Login</h1>
+          <div class="inputBox">
+            <input type = "text" name="username" placeholder="Username" required>
+            <i class="bx bx-user"></i>
+
+          </div>
+          
+          <div class="inputBox">
+            <input type = "password" name = "password" placeholder="Password" required>
+            <i class="bx bx-lock" ></i>
+          </div>
+          
+          <button type="submit" class="login-btn">Login</button> 
+          <!-- maybe use type='submit' -->
+          <button type = "button" onclick = "window.location.href='/signup'" class="signup-button">Sign Up</button>
+
+          <button type = "button" onclick = "window.location.href='/guest_login'" class="signup-button">Guest Logon</button>
+
+
+        </form>
+      </div>
+
+    </div>
+
+    
+  </body>
+
+
+</html>

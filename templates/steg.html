@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <title>Landing</title>
+    
+    <head>
+        <link rel="stylesheet" href="../static/steg.css">
+    </head>
+
+    <body class="webpage">
+        <form action='/embed' class="login-box" method = "post" enctype="multipart/form-data">
+            <h3>Embed Message</h3>
+            Carrier File: <input type="file" name="carrier"><br>
+            Message File: <input type="file" name="message"><br>
+            <input type="number" name="S" class="S-input" placeholder="Enter Value for S"><br>
+            <input type="number" name="L" class="L-input" placeholder="Enter Value for L"><br>
+            <button type="submit">Embed</button>
+        </form>
+
+        <form action="/extract" class="login-box" method="post" enctype="multipart/form-data">
+            <h3>Extract Message</h3>
+            Carrier File: <input type="file" name="carrier"><br>
+            <input type="number" name="S" class="S-input" placeholder="Enter Value for S"><br>
+            <input type="number" name="L" class="L-input" placeholder="Enter Value for L"><br>
+            <button type="submit">Extract</button>
+        </form>
+
+    </body>
+</html>
