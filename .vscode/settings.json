@@ -1,3 +1,5 @@
 {
-    "python-envs.defaultEnvManager": "ms-python.python:system"
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "appService.defaultWebAppToDeploy": "/subscriptions/fe298b81-5892-42f3-862d-26f3d56706d0/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/Steganography-Site",
+    "appService.deploySubpath": "."
 }

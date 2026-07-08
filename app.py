@@ -8,8 +8,7 @@ from werkzeug.utils import secure_filename
 import sqlite3
 import uuid
 app = Flask(__name__)
-app.secret_key = "supersecretkey"
-
+app.secret_key = os.environ.get("SECRET_KEY")
 #venvironment activate command (windows cmd)
 #venv\Scripts\activate.bat
 
