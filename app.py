@@ -8,7 +8,10 @@ from werkzeug.utils import secure_filename
 import sqlite3
 import uuid
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY")
+app.secret_key = os.environ.get(
+    "SECRET_KEY",
+    "local-development-only-key"
+)
 #venvironment activate command (windows cmd)
 #venv\Scripts\activate.bat
 
@@ -81,11 +84,12 @@ def landing_load():
     
 
     message = "View Posts"
+    message2 = "Please note, this is a test site and all posts are public. Do not use or post sensitive information."
     
    
     if not posts:
         message = "No posts yet"
-        return render_template("landing.html", message = message, logged_in=logged_in, username = username)
+        return render_template("landing.html", message = message, message2 = message2, logged_in=logged_in, username = username)
     
     index = index % len(posts)
 
@@ -94,7 +98,7 @@ def landing_load():
     print(index)
     print("image from db:" ,current_post)
 
-    return render_template("landing.html", posts=posts, logged_in=logged_in, username = username, post = current_post, index = index, total = len(posts), message = message)
+    return render_template("landing.html", posts=posts, logged_in=logged_in, username = username, post = current_post, index = index, total = len(posts), message = message, message2 = message2)
 
 
 
@@ -124,11 +128,13 @@ def guest_login():
         })
 
     message = "View Posts"
+    message2 = "Please note, this is a test site and all posts are public. Do not use or post sensitive information."
+
     
    
     if not posts:
         message = "No posts yet"
-        return render_template("landing.html", message = message, logged_in=False, username = "guest")
+        return render_template("landing.html", message = message, message2 = message2, logged_in=False, username = "guest")
     
     index = index % len(posts)
 
@@ -137,7 +143,7 @@ def guest_login():
     print(index)
     print("image from db:" ,current_post)
 
-    return render_template("landing.html", posts=posts, logged_in=False, username = "guest", post = current_post, index = index, total = len(posts), message = message)
+    return render_template("landing.html", posts=posts, logged_in=False, username = "guest", post = current_post, index = index, total = len(posts), message = message, message2 = message2)
 
 
 ''' START CREDENTIALS FUNCTIONS '''
